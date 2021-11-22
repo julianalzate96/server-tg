@@ -12,21 +12,16 @@ $server->register(
     array("name" => "xsd:string"),
     array("return" => "xsd:string"),
     $namespace,
-    'urn:test#saludar',
-    "rcp",
+    false,
+    "rpc",
     "encoded",
     "recibe un nombre y regresa un saludo."
 );
 
-function saludar($name = "default"){
-    $saludo = "Hola " + $name;
+function saludar($name){
+    $saludo = "Hola ".$name;
     return $saludo;
 }
 
-//$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
-//$server->service($HTTP_RAW_POST_DATA);
-$POST_DATA = file_get_contents("php://input");
-print($POST_DATA);
-$server->service($POST_DATA);
-exit();
+$server->service(file_get_contents("php://input"));
 
