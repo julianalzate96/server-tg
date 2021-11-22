@@ -1,6 +1,6 @@
 <?php
 
-require_once "vendor/econea/nusoap/src/nusoap.php";
+/* require_once "vendor/econea/nusoap/src/nusoap.php";
 
 $namespace = "test";
 $server = new soap_server();
@@ -28,4 +28,6 @@ $POST_DATA = file_get_contents("php://input");
 print($POST_DATA);
 $server->service($POST_DATA);
 exit();
+ */
 
+ print("Hola");
