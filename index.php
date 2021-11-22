@@ -19,6 +19,7 @@ $server->register(
 );
 
 function saludar($name = "default"){
+    $saludo = "Hola " + $name;
     return $name;
 }
 
