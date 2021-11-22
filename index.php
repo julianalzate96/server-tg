@@ -15,7 +15,7 @@ $server->register(
     'urn:test#saludar',
     "rcp",
     "encoded",
-    "recibe un nombre y regresa un saludo"
+    "recibe un nombre y regresa un saludo."
 );
 
 function saludar($name = "default"){
