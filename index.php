@@ -20,7 +20,7 @@ $server->register(
 
 function saludar($name = "default"){
     $saludo = "Hola " + $name;
-    return $name;
+    return $saludo;
 }
 
 //$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
