@@ -23,17 +23,43 @@ $server->wsdl->addComplexType(
     '',
     array(
         'nombre' => array('name' => 'nombre', 'type' => 'xsd:string'),
-        'nivel_academico' => array('name' => 'nivelEducativo', 'type' => 'xsd:string'),
+        'nivel_academico' => array('name' => 'nivel_academico', 'type' => 'xsd:string'),
         'correo' => array('name' => 'correo', 'type' => 'xsd:string'),
-        'tiempo_experiencia' => array('name' => 'tiempoExperiencia', 'type' => 'xsd:string'),
-        'tiempo_poli' => array('name' => 'tiempoPoli', 'type' => 'xsd:string'),
+        'tiempo_experiencia' => array('name' => 'tiempo_experiencia', 'type' => 'xsd:string'),
+        'tiempo_poli' => array('name' => 'tiempo_poli', 'type' => 'xsd:string'),
     )
+);
+
+$server->wsdl->addComplexType(
+    'docentesArray',
+    'complexType',
+    'array',
+    '',
+    'SOAP-ENC:Array',
+    array(),
+    array(
+        array(
+            'ref' => 'SOAP-ENC:arrayType',
+            'wsdl:arrayType' => 'tns:infoDocente[]'
+        )
+    ),
 );
 
 $server->register(
     "swDocentes",
     array("cedula" => "xsd:string"),
     array("return" => "tns:infoDocente"),
+    $namespace,
+    false,
+    "rpc",
+    "encoded",
+    "Devuelve información relacionada a los docentes que hacen parte de los programas de APIT"
+);
+
+$server->register(
+    "swDocentesAsignatura",
+    array("codigo_asignatura" => "xsd:string"),
+    array("return" => "tns:docentesArray"),
     $namespace,
     false,
     "rpc",
