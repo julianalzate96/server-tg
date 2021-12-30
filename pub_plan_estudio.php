@@ -25,6 +25,8 @@ $server->wsdl->addComplexType(
         'perfil_profesional' => array('name' => 'perfil_profesional', 'type' => 'xsd:string'),
         'titulo' => array('name' => 'titulo', 'type' => 'xsd:string'),
         'total_creditos' => array('name' => 'total_creditos', 'type' => 'xsd:integer'),
+        'tope_creditos' => array('name' => 'tope_creditos', 'type' => 'xsd:integer'),
+        'cantidad_materias' => array('name' => 'cantidad_materias', 'type' => 'xsd:integer'),
     )
 );
 
@@ -126,7 +128,38 @@ $server->register(
     "Devuelve la cantidad de créditos totales del plan de estudio"
 );
 
-swCreditosTotalesPlanDeEstudios('ING');
+$server->register(
+    "swCreditosTotalesSemestre",
+    array('codigo_plan_estudio' => 'xsd:string', 'semestre' => 'xsd:integer'),
+    array("return" => "tns:infoPlanEstudio"),
+    $namespace,
+    false,
+    "rpc",
+    "encoded",
+    "Devuelve la cantidad de créditos que se pueden coger por parte de un estudiante en un plan de estudio específico"
+);
+
+$server->register(
+    "swTopeCreditos",
+    array('codigo_plan_estudio' => 'xsd:string'),
+    array("return" => "tns:infoPlanEstudio"),
+    $namespace,
+    false,
+    "rpc",
+    "encoded",
+    "Devuelve la cantidad de créditos que se deben alcanzar para desbloquear trabajo de grado"
+);
+
+$server->register(
+    "swCantidadMaterias",
+    array('codigo_plan_estudio' => 'xsd:string'),
+    array("return" => "tns:infoPlanEstudio"),
+    $namespace,
+    false,
+    "rpc",
+    "encoded",
+    "Devuelve la cantidad de materias con las que cuenta el plan de estudio"
+);
 
 $server->service(file_get_contents("php://input"));
 

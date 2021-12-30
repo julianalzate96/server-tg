@@ -19,12 +19,17 @@ function swAsignaturasSemestre($codigo_plan_estudio, $semestre){
 }
 
 function swCreditosTotalesPlanDeEstudios($codigo_plan_estudio){
-    global $conn;
-    
-    $result = $conn->query("SELECT PE.codigo_plan_estudio, PE.nombre, SUM(A.total_creditos) AS total_creditos FROM DETALLE_ASIGNATURA DA INNER JOIN ASIGNATURA A ON DA.codigo_asignatura = A.codigo_asignatura INNER JOIN PLAN_ESTUDIO PE ON PE.codigo_plan_estudio = DA.codigo_plan_estudio WHERE DA.codigo_plan_estudio = '$codigo_plan_estudio'");
+    return buildResonse("SELECT PE.codigo_plan_estudio, PE.nombre, SUM(A.total_creditos) AS total_creditos FROM DETALLE_ASIGNATURA DA INNER JOIN ASIGNATURA A ON DA.codigo_asignatura = A.codigo_asignatura INNER JOIN PLAN_ESTUDIO PE ON PE.codigo_plan_estudio = DA.codigo_plan_estudio WHERE DA.codigo_plan_estudio = '$codigo_plan_estudio'");
+}
 
-    $row = mysqli_fetch_assoc($result);
+function swCreditosTotalesSemestre($codigo_plan_estudio, $semestre){
+    return buildResponse("SELECT PE.codigo_plan_estudio, PE.nombre, SUM(A.total_creditos) AS total_creditos FROM DETALLE_ASIGNATURA DA INNER JOIN ASIGNATURA A ON DA.codigo_asignatura = A.codigo_asignatura INNER JOIN PLAN_ESTUDIO PE ON PE.codigo_plan_estudio = DA.codigo_plan_estudio WHERE DA.codigo_plan_estudio = '$codigo_plan_estudio' AND DA.semestre = $semestre");
+}
 
-    mysqli_free_result($result);
-    return $row;
+function swTopeCreditos($codigo_plan_estudio){
+    return buildResponse("SELECT codigo_plan_estudio, nombre, tope_creditos FROM PLAN_ESTUDIO WHERE codigo_plan_estudio = '$codigo_plan_estudio'");
+}
+
+function swCantidadMaterias($codigo_plan_estudio){
+    return buildResponse("SELECT PE.codigo_plan_estudio, PE.nombre, COUNT(PE.codigo_plan_estudio) AS cantidad_materias FROM DETALLE_ASIGNATURA DA INNER JOIN PLAN_ESTUDIO PE ON DA.codigo_plan_estudio = PE.codigo_plan_estudio WHERE DA.codigo_plan_estudio = '$codigo_plan_estudio'");
 }
