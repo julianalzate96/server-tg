@@ -16,3 +16,14 @@ function buildResponseArray ($query){
     
     return $array;
 }
+
+function buildResponse ($query){
+    global $conn;
+    
+    $result = $conn->query($query);
+
+    $row = mysqli_fetch_assoc($result);
+
+    mysqli_free_result($result);
+    return $row;
+}
