@@ -3,7 +3,7 @@
 require 'utils.php';
 
 function swTitulos(){
-    return buildArrayResponse("SELECT codigo_plan_estudio, nombre, perfil_profesional, titulo FROM PLAN_ESTUDIO");
+    return buildResponseArray("SELECT codigo_plan_estudio, nombre, perfil_profesional, titulo FROM PLAN_ESTUDIO");
 }
 
 function swTitulosSede($ciudad){
@@ -19,7 +19,7 @@ function swAsignaturasSemestre($codigo_plan_estudio, $semestre){
 }
 
 function swCreditosTotalesPlanDeEstudios($codigo_plan_estudio){
-    return buildResonse("SELECT PE.codigo_plan_estudio, PE.nombre, SUM(A.total_creditos) AS total_creditos FROM DETALLE_ASIGNATURA DA INNER JOIN ASIGNATURA A ON DA.codigo_asignatura = A.codigo_asignatura INNER JOIN PLAN_ESTUDIO PE ON PE.codigo_plan_estudio = DA.codigo_plan_estudio WHERE DA.codigo_plan_estudio = '$codigo_plan_estudio'");
+    return buildResponse("SELECT PE.codigo_plan_estudio, PE.nombre, SUM(A.total_creditos) AS total_creditos FROM DETALLE_ASIGNATURA DA INNER JOIN ASIGNATURA A ON DA.codigo_asignatura = A.codigo_asignatura INNER JOIN PLAN_ESTUDIO PE ON PE.codigo_plan_estudio = DA.codigo_plan_estudio WHERE DA.codigo_plan_estudio = '$codigo_plan_estudio'");
 }
 
 function swCreditosTotalesSemestre($codigo_plan_estudio, $semestre){
