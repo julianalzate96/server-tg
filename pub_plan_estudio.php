@@ -8,6 +8,7 @@ require_once 'vendor/autoload.php';
 require_once "vendor/econea/nusoap/src/nusoap.php";
 require "plan_estudio.php";
 
+// Configuracion del Servicio Web
 $namespace = "pub_plan_estudio";
 $server = new soap_server();
 $server->configureWSDL("Plan de Estudio", $namespace);
@@ -30,6 +31,11 @@ $server->wsdl->addComplexType(
     )
 );
 
+/* 
+ * En esta parte se definen los esquemas de las respuestas de los servicios web, 
+ * se define como clave, valor y el nombre que coloquemos sera la etiqueta XML
+ * que tendra el atributo
+ */
 $server->wsdl->addComplexType(
     'infoAsignatura',
     'complexType',
@@ -72,6 +78,7 @@ $server->wsdl->addComplexType(
     ),
 );
 
+// Ene sta parte se registras las funciones que tendra el servicio web
 
 $server->register(
     "swTitulos",
