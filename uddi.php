@@ -4,7 +4,7 @@ include 'utils.php';
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
-header("Access-Control-Allow-Methods: GET, OPTIONS");
+header("Access-Control-Allow-Methods: GET");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
