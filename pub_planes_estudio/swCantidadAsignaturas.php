@@ -20,19 +20,19 @@ $server->wsdl->addComplexType(
     array(
         'codigo_plan_estudio' => array('name' => 'codigo_plan_estudio', 'type' => 'xsd:string'),
         'nombre' => array('name' => 'nombre', 'type' => 'xsd:string'),
-        'cantidad_materias' => array('name' => 'cantidad_materias', 'type' => 'xsd:integer'),
+        'cantidad_asignaturas' => array('name' => 'cantidad_asignaturas', 'type' => 'xsd:integer'),
     )
 );
 
 $server->register(
-    "swCantidadMaterias",
+    "swCantidadAsignaturas",
     array('codigo_plan_estudio' => 'xsd:string'),
     array("return" => "tns:infoPlanEstudio"),
     $namespace,
     false,
     "rpc",
     "encoded",
-    "Devuelve la cantidad de materias con las que cuenta el plan de estudio"
+    "Devuelve la cantidad de asignaturas con las que cuenta el plan de estudio"
 );
 
 $server->service(file_get_contents("php://input"));

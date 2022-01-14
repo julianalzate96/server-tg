@@ -30,6 +30,6 @@ function swTopeCreditos($codigo_plan_estudio){
     return buildResponse("SELECT codigo_plan_estudio, nombre, tope_creditos FROM PLAN_ESTUDIO WHERE codigo_plan_estudio = '$codigo_plan_estudio'");
 }
 
-function swCantidadMaterias($codigo_plan_estudio){
-    return buildResponse("SELECT PE.codigo_plan_estudio, PE.nombre, COUNT(PE.codigo_plan_estudio) AS cantidad_materias FROM DETALLE_ASIGNATURA DA INNER JOIN PLAN_ESTUDIO PE ON DA.codigo_plan_estudio = PE.codigo_plan_estudio WHERE DA.codigo_plan_estudio = '$codigo_plan_estudio'");
+function swCantidadAsignaturas($codigo_plan_estudio){
+    return buildResponse("SELECT PE.codigo_plan_estudio, PE.nombre, COUNT(PE.codigo_plan_estudio) AS cantidad_asignaturas FROM DETALLE_ASIGNATURA DA INNER JOIN PLAN_ESTUDIO PE ON DA.codigo_plan_estudio = PE.codigo_plan_estudio WHERE DA.codigo_plan_estudio = '$codigo_plan_estudio'");
 }
