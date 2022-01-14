@@ -3,24 +3,14 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 
-require_once 'vendor/autoload.php';
-require_once "vendor/econea/nusoap/src/nusoap.php";
-require "docentes.php";
-$conn = require "db.php";
+require_once "../vendor/econea/nusoap/src/nusoap.php";
+require "../pub_docentes/docentes.php";
 
-
-// Configuracion del Servicio Web
-$namespace = "pub_docentes";
+$namespace = "swDocentes";
 $server = new soap_server();
 $server->configureWSDL("Docentes", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
-
-/* 
- * En esta parte se definen los esquemas de las respuestas de los servicios web, 
- * se define como clave, valor y el nombre que coloquemos sera la etiqueta XML
- * que tendra el atributo
- */
 $server->wsdl->addComplexType(
     'infoDocente',
     'complexType',
@@ -36,23 +26,6 @@ $server->wsdl->addComplexType(
     )
 );
 
-$server->wsdl->addComplexType(
-    'docentesArray',
-    'complexType',
-    'array',
-    '',
-    'SOAP-ENC:Array',
-    array(),
-    array(
-        array(
-            'ref' => 'SOAP-ENC:arrayType',
-            'wsdl:arrayType' => 'tns:infoDocente[]'
-        )
-    ),
-);
-
-// Ene sta parte se registras las funciones que tendra el servicio web
-
 $server->register(
     "swDocentes",
     array("cedula" => "xsd:string"),
@@ -64,16 +37,4 @@ $server->register(
     "Devuelve información relacionada a los docentes que hacen parte de los programas de APIT"
 );
 
-$server->register(
-    "swDocentesAsignatura",
-    array("codigo_asignatura" => "xsd:string"),
-    array("return" => "tns:docentesArray"),
-    $namespace,
-    false,
-    "rpc",
-    "encoded",
-    "Devuelve información relacionada a los docentes que hacen parte de los programas de APIT"
-);
-
 $server->service(file_get_contents("php://input"));
-

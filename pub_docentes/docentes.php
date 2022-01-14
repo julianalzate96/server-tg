@@ -1,5 +1,5 @@
 <?php
-require 'utils.php';
+require '../utils.php';
 
 function swDocentes($cedula){
     return buildResponse("SELECT cedula, nombre, nivel_academico, correo, tiempo_experiencia, tiempo_poli FROM DOCENTE WHERE cedula = $cedula");

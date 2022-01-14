@@ -1,6 +1,6 @@
 <?php
 
-include "utils.php";
+include "../utils.php";
 
 function swCreditosMateria($codigo_asignatura){
     return buildResponse("SELECT A.codigo_asignatura, A.nombre, A.total_creditos FROM ASIGNATURA A WHERE A.codigo_asignatura = '$codigo_asignatura'");
