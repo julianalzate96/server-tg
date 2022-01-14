@@ -1,6 +1,6 @@
 <?php
 
-require_once "vendor/econea/nusoap/src/nusoap.php";
+require_once "../vendor/econea/nusoap/src/nusoap.php";
 require "plan_estudio.php";
 
 header("Access-Control-Allow-Origin: *");
