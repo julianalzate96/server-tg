@@ -1,6 +1,6 @@
 <?php
 
-require 'utils.php';
+require '../utils.php';
 
 function swTitulos(){
     return buildResponseArray("SELECT codigo_plan_estudio, nombre, perfil_profesional, titulo FROM PLAN_ESTUDIO");
