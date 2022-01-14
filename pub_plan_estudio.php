@@ -3,7 +3,6 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 
-require_once 'vendor/autoload.php';
 require_once "vendor/econea/nusoap/src/nusoap.php";
 require "plan_estudio.php";
 
@@ -75,19 +74,6 @@ $server->wsdl->addComplexType(
             'wsdl:arrayType' => 'tns:infoPlanEstudio[]'
         )
     ),
-);
-
-// Ene sta parte se registras las funciones que tendra el servicio web
-
-$server->register(
-    "swTitulos",
-    array(),
-    array("return" => "tns:planEstudioArray"),
-    $namespace,
-    false,
-    "rpc",
-    "encoded",
-    "Devuelve los títulos de los programas de APIT por los cuales un estudiante puede optar en el PCJIC."
 );
 
 $server->register(
