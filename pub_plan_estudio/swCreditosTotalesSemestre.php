@@ -6,9 +6,9 @@ require "plan_estudio.php";
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 
-$namespace = "swTitulos";
+$namespace = "swCreditosTotalesPlanDeEstudios";
 $server = new soap_server();
-$server->configureWSDL("Titulos", $namespace);
+$server->configureWSDL("Creditos Totales del Plan de Estudios", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
 $server->wsdl->addComplexType(
@@ -20,20 +20,19 @@ $server->wsdl->addComplexType(
     array(
         'codigo_plan_estudio' => array('name' => 'codigo_plan_estudio', 'type' => 'xsd:string'),
         'nombre' => array('name' => 'nombre', 'type' => 'xsd:string'),
-        'perfil_profesional' => array('name' => 'perfil_profesional', 'type' => 'xsd:string'),
-        'titulo' => array('name' => 'titulo', 'type' => 'xsd:string'),
+        'total_creditos' => array('name' => 'total_creditos', 'type' => 'xsd:integer'),
     )
 );
 
 $server->register(
-    "swTitulos",
-    array(),
-    array("return" => "tns:planEstudioArray"),
+    "swCreditosTotalesSemestre",
+    array('codigo_plan_estudio' => 'xsd:string', 'semestre' => 'xsd:integer'),
+    array("return" => "tns:infoPlanEstudio"),
     $namespace,
     false,
     "rpc",
     "encoded",
-    "Devuelve los títulos de los programas de APIT por los cuales un estudiante puede optar en el PCJIC."
+    "Devuelve la cantidad de créditos que se pueden coger por parte de un estudiante en un plan de estudio específico"
 );
 
 $server->service(file_get_contents("php://input"));

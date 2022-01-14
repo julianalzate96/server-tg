@@ -6,9 +6,9 @@ require "plan_estudio.php";
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 
-$namespace = "swTitulos";
+$namespace = "swTitulosSede";
 $server = new soap_server();
-$server->configureWSDL("Titulos", $namespace);
+$server->configureWSDL("Titulos por Sede", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
 $server->wsdl->addComplexType(
@@ -25,15 +25,29 @@ $server->wsdl->addComplexType(
     )
 );
 
-$server->register(
-    "swTitulos",
+$server->wsdl->addComplexType(
+    'planEstudioArray',
+    'complexType',
+    'array',
+    '',
+    'SOAP-ENC:Array',
     array(),
+    array(
+        array(
+            'ref' => 'SOAP-ENC:arrayType',
+            'wsdl:arrayType' => 'tns:infoPlanEstudio[]'
+        )
+    ),
+);
+
+$server->register(
+    "swTitulosSede",
+    array('ciudad' => 'xsd:string'),
     array("return" => "tns:planEstudioArray"),
     $namespace,
     false,
     "rpc",
     "encoded",
-    "Devuelve los títulos de los programas de APIT por los cuales un estudiante puede optar en el PCJIC."
+    "Devuelve los títulos de los programas de APIT por los cuales un estudiante puede optar en el PCJIC filtrado por una sede en específico"
 );
-
 $server->service(file_get_contents("php://input"));
