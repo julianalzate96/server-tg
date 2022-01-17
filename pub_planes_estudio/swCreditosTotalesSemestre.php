@@ -8,7 +8,7 @@ header("Access-Control-Allow-Headers: *");
 
 $namespace = "swCreditosTotalesPlanDeEstudios";
 $server = new soap_server();
-$server->configureWSDL("Creditos Totales del Plan de Estudios", $namespace);
+$server->configureWSDL("swCreditosTotalesPlanDeEstudios", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
 $server->wsdl->addComplexType(

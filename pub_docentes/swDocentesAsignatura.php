@@ -8,7 +8,7 @@ require "docentes.php";
 
 $namespace = "swDocentesAsignatura";
 $server = new soap_server();
-$server->configureWSDL("Docentes por Asignatura", $namespace);
+$server->configureWSDL("swDocentesAsignatura", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
 $server->wsdl->addComplexType(

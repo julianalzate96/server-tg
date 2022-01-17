@@ -8,7 +8,7 @@ require "asignatura.php";
 
 $namespace = "swCoRequisitos";
 $server = new soap_server();
-$server->configureWSDL("Co-Requisitos de una asignatura", $namespace);
+$server->configureWSDL("swCoRequisitos", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
 $server->wsdl->addComplexType(
