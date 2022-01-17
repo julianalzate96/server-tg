@@ -25,6 +25,21 @@ $server->wsdl->addComplexType(
     )
 );
 
+$server->wsdl->addComplexType(
+    'planEstudioArray',
+    'complexType',
+    'array',
+    '',
+    'SOAP-ENC:Array',
+    array(),
+    array(
+        array(
+            'ref' => 'SOAP-ENC:arrayType',
+            'wsdl:arrayType' => 'tns:infoPlanEstudio[]'
+        )
+    ),
+);
+
 $server->register(
     "swTitulos",
     array(),
