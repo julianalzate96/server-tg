@@ -8,7 +8,7 @@ require "asignatura.php";
 
 $namespace = "swInfoTotalAsignatura";
 $server = new soap_server();
-$server->configureWSDL(" Información total de una Asignatura ", $namespace);
+$server->configureWSDL("swInfoTotalAsignatura", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
 $server->wsdl->addComplexType(

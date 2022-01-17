@@ -8,7 +8,7 @@ require "investigacion.php";
 
 $namespace = "swSemilleroGrupo";
 $server = new soap_server();
-$server->configureWSDL("Semillero por Grupo de Investigacion", $namespace);
+$server->configureWSDL("swSemilleroGrupo", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
 $server->wsdl->addComplexType(

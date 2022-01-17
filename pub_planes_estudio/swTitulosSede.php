@@ -8,7 +8,7 @@ header("Access-Control-Allow-Headers: *");
 
 $namespace = "swTitulosSede";
 $server = new soap_server();
-$server->configureWSDL("Titulos por Sede", $namespace);
+$server->configureWSDL("swTitulosSede", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
 $server->wsdl->addComplexType(

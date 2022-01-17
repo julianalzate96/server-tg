@@ -8,7 +8,7 @@ require "asignatura.php";
 
 $namespace = "swCreditosMateria";
 $server = new soap_server();
-$server->configureWSDL("Créditos de una materia", $namespace);
+$server->configureWSDL("swCreditosMateria", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
 $server->wsdl->addComplexType(

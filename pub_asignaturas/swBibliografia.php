@@ -8,7 +8,7 @@ require "asignatura.php";
 
 $namespace = "swBibliografia";
 $server = new soap_server();
-$server->configureWSDL("Bibliografía recomendada de una asignatura", $namespace);
+$server->configureWSDL("swBibliografia", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
 $server->wsdl->addComplexType(
