@@ -6,9 +6,9 @@ require "plan_estudio.php";
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 
-$namespace = "swAsignaturasSemestre";
+$namespace = "swCantidadAsignaturas";
 $server = new soap_server();
-$server->configureWSDL("swAsignaturasSemestre", $namespace);
+$server->configureWSDL("swCantidadAsignaturas", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
 $server->wsdl->addComplexType(
