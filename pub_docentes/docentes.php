@@ -2,7 +2,18 @@
 require '../utils.php';
 
 function swDocentes($cedula){
-    return buildResponse("SELECT cedula, nombre, nivel_academico, correo, tiempo_experiencia, tiempo_poli FROM DOCENTE WHERE cedula = $cedula");
+    $headers = getallheaders();
+    $token = getenv("TOKEN");
+
+    if(isset($headers["Authorization"])){
+        if($headers["Authorization"] == $token){
+            return buildResponse("SELECT cedula, nombre, nivel_academico, correo, tiempo_experiencia, tiempo_poli FROM DOCENTE WHERE cedula = $cedula"); 
+        }else{
+            return buildResponse("SELECT cedula, nombre, nivel_academico, correo, tiempo_experiencia, tiempo_poli FROM DOCENTE WHERE cedula = 1");
+        }
+    }else{
+        return array('error' => 'error');
+    }
 }
 
 function swDocentesAsignatura($codigo_asignatura){
