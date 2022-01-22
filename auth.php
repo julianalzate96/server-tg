@@ -9,11 +9,10 @@ $token = getenv("TOKEN");
 
 if(isset($_GET["email"])){
     $domain = "@poli.edu.co";
- 
-// Test if string contains the word 
-if(strpos($_GET["email"], $domain) !== false){
-    echo json_encode($token);
-} else{
-    echo json_encode(false);
-}
+    
+    if(strpos($_GET["email"], $domain) !== false){
+        echo json_encode($token);
+    } else{
+        echo json_encode(false);
+    }
 }
