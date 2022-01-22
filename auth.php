@@ -1,5 +1,19 @@
 <?php
 
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+
 $token = getenv("TOKEN");
 
-print_r($token);
+if(isset($_GET["email"])){
+    $domain = "@poli.edu.co";
+ 
+// Test if string contains the word 
+if(strpos($_GET["email"], $domain) !== false){
+    echo json_encode($token);
+} else{
+    echo json_encode(false);
+}
+}
