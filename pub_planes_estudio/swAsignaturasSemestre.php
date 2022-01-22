@@ -8,6 +8,8 @@ header("Access-Control-Allow-Headers: *");
 
 $namespace = "swAsignaturasSemestre";
 $server = new soap_server();
+$server->soap_defencoding = 'UTF-8';
+$server->decode_utf8 = false;
 $server->configureWSDL("swAsignaturasSemestre", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 

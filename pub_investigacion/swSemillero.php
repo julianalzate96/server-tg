@@ -8,6 +8,8 @@ require "investigacion.php";
 
 $namespace = "swSemillero";
 $server = new soap_server();
+$server->soap_defencoding = 'UTF-8';
+$server->decode_utf8 = false;
 $server->configureWSDL("swSemillero", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 

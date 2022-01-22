@@ -8,6 +8,8 @@ require "docentes.php";
 
 $namespace = "swDocentesAsignatura";
 $server = new soap_server();
+$server->soap_defencoding = 'UTF-8';
+$server->decode_utf8 = false;
 $server->configureWSDL("swDocentesAsignatura", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
