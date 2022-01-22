@@ -9,7 +9,7 @@ function swDocentes($cedula){
         if($headers["Authorization"] == $token){
             return buildResponse("SELECT cedula, nombre, nivel_academico, correo, tiempo_experiencia, tiempo_poli FROM DOCENTE WHERE cedula = $cedula"); 
         }else{
-            return buildResponse("SELECT cedula, nombre, nivel_academico, correo, tiempo_experiencia, tiempo_poli FROM DOCENTE WHERE cedula = 1");
+            return array('error' => 'error');
         }
     }else{
         return array('error' => 'error');
