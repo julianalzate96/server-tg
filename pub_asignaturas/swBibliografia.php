@@ -8,6 +8,8 @@ require "asignatura.php";
 
 $namespace = "swBibliografia";
 $server = new soap_server();
+$server->soap_defencoding = 'UTF-8';
+$server->decode_utf8 = false;
 $server->configureWSDL("swBibliografia", $namespace);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
