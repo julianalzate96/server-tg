@@ -2,7 +2,6 @@
 
 $conn = require "db.php";
 
-
 function buildResponseArray ($query){
     global $conn;
 
